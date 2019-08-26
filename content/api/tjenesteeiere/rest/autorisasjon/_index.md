@@ -144,6 +144,46 @@ Eksempel på respons:
 }
 ```
 
+## Hente ut roller
+
+Hente ut alle roller en person `{subject}` har for en annen person eller organisasjon `{reportee}` på tjenester som tilhører autentisert tjenesteeier.
+
+```HTTP
+GET https://www.altinn.no/api/serviceowner/authorization/roles?ForceEIAuthentication&language={language}&subject={subject}&reportee={reportee} HTTP/1.1
+Accept: application/hal+json
+ApiKey: myKey
+```
+
+Eksempel på respons:
+
+```JSON
+{
+    "_links": {
+        "self": {
+            "href": "https://tt02.altinn.no/api/serviceowner/authorization/roles?subject=23114702129&reportee=03065001488"
+        }
+    },
+    "_embedded": {
+        "roles": [
+            {
+                "RoleId": 483404,
+                "RoleType": "Altinn",
+                "RoleDefinitionId": 3,
+                "RoleName": "Salaries and personnel employee",
+                "RoleDescription": "Access to services related to salaries and personnel",
+                "Delegator": "PAULINE GRINDEN",
+                "DelegatedTime": "2018-07-03T10:44:18.48",
+                "_links": {
+                    "roledefinition": {
+                        "href": "https://tt02.altinn.no/api/serviceowner/roledefinitions/3"
+                    }
+                }
+            }
+        ]
+    }
+}
+```
+
 ## Hente ut alle rolledefinisjoner
 
 ```HTTP
